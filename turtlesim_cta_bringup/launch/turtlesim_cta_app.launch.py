@@ -21,7 +21,7 @@ def generate_launch_description():
         executable="turtle_spawner",
         parameters=[
             {"spawning_frequency": 1.3},
-            {"turtle_name_prefix": "My_Turtle"}
+            {"turtle_name_prefix": "Lat_turtle"}
         ]
     )
     
