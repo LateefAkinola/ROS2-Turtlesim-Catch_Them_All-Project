@@ -20,8 +20,8 @@ def generate_launch_description():
         package="turtlesim_cta_py",
         executable="turtle_spawner",
         parameters=[
-            {"spawning_frequency": 1.3},
-            {"turtle_name_prefix": "Lat_turtle"}
+            {"spawning_frequency": 1.2},
+            {"turtle_name_prefix": "My_Turtle"}
         ]
     )
     
