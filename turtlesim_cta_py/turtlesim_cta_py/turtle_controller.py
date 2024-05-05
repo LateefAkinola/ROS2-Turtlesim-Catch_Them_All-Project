@@ -5,8 +5,8 @@ from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
 
-from my_robot_interfaces.msg import TurtleArray
-from my_robot_interfaces.srv import CatchTurtle
+from turtlesim_cta_interfaces.msg import TurtleArray
+from turtlesim_cta_interfaces.srv import CatchTurtle
 
 from math import sqrt, atan2, pi
 from functools import partial
@@ -15,14 +15,16 @@ from functools import partial
 class TurtleControllerNode(Node):
     def __init__(self):
         super().__init__("turtle_controller")
-
+        self.declare_parameter("catch_nearest_turtle", True)
         
+        self.catch_nearest_turtle = self.get_parameter("catch_nearest_turtle").value
+
         self.linear_kp = 2.0
         self.angular_kp = 6.0
 
         # Initialize 
         self.next_target_turtle = None
-        self.master_x = None
+        self.master = None
 
         self.turtle_pose_sub_ = self.create_subscription(
             Pose, "turtle1/pose", self.callback_turtle_pose, 10)
@@ -37,23 +39,25 @@ class TurtleControllerNode(Node):
 
     # Turtle Pose Subscriber Callback
     def callback_turtle_pose(self, pose):
-        self.master_x = pose.x
-        self.master_y = pose.y
-        self.master_theta = pose.theta
+        self.master = pose
 
     # Alive Turtles Subscriber Callback
     def callback_alive_turtles(self, alive_turtles):
         self.alive_turtles = alive_turtles.turtles
         
         if len(self.alive_turtles) > 0:
-            distances = []
-            for turtle in self.alive_turtles:
-                dist_x = turtle.x - self.master_x
-                dist_y = turtle.y - self.master_y
-                dist = self.compute_distance(dist_x, dist_y)
-                distances.append(dist)           
-            i =  distances.index(min(distances))  
-            self.next_target_turtle = self.alive_turtles[i] 
+            if self.catch_nearest_turtle:
+                distances = []
+                for turtle in self.alive_turtles:
+                    dist_x = turtle.x - self.master.x
+                    dist_y = turtle.y - self.master.y
+                    dist = self.compute_distance(dist_x, dist_y)
+                    distances.append(dist)           
+                i =  distances.index(min(distances))  
+                self.next_target_turtle = self.alive_turtles[i] 
+            else:
+                self.next_target_turtle = self.alive_turtles[0] 
+                
 
 
 
@@ -66,14 +70,14 @@ class TurtleControllerNode(Node):
 
     # Control Loop Function (Velocity Publisher Callback)
     def control_master_turtle(self):
-        if self.master_x == None or self.next_target_turtle  == None:
+        if self.master == None or self.next_target_turtle  == None:
             return
         
         if len(self.alive_turtles) == 0:
             return
  
-        dist_x = self.next_target_turtle.x - self.master_x
-        dist_y = self.next_target_turtle.y - self.master_y
+        dist_x = self.next_target_turtle.x - self.master.x
+        dist_y = self.next_target_turtle.y - self.master.y
         dist = self.compute_distance(dist_x, dist_y)
 
         vel_msg = Twist()
@@ -85,7 +89,7 @@ class TurtleControllerNode(Node):
 
             # angular velocity
             goal_theta_ = atan2(dist_y, dist_x)
-            theta_diff = goal_theta_ - self.master_theta
+            theta_diff = goal_theta_ - self.master.theta
             if theta_diff > pi:
                 theta_diff -= 2 * pi
             elif theta_diff < -pi:

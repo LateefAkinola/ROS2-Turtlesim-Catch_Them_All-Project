@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'turtlesim_catch_them_all'
+package_name = 'turtlesim_cta_py'
 
 setup(
     name=package_name,
@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "turtle_spawner = turtlesim_catch_them_all.turtle_spawner:main",
-            "turtle_controller = turtlesim_catch_them_all.turtle_controller:main"
+            "turtle_spawner = turtlesim_cta_py.turtle_spawner:main",
+            "turtle_controller = turtlesim_cta_py.turtle_controller:main"
         ],
     },
 )
