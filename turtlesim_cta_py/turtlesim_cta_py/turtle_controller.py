@@ -19,6 +19,7 @@ class TurtleControllerNode(Node):
         
         self.catch_nearest_turtle = self.get_parameter("catch_nearest_turtle").value
 
+        # Set proportional gain for the controller
         self.linear_kp = 2.0
         self.angular_kp = 6.0
 
