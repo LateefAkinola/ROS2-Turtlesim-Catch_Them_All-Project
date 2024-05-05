@@ -11,11 +11,18 @@ def generate_launch_description():
     )
     turtle_controller = Node(
         package="turtlesim_cta_py",
-        executable="turtle_controller"
+        executable="turtle_controller",
+        parameters=[
+            {"catch_nearest_turtle": True}
+        ]
     )
     turtle_spawner = Node(
         package="turtlesim_cta_py",
-        executable="turtle_spawner"
+        executable="turtle_spawner",
+        parameters=[
+            {"spawning_frequency": 1.3},
+            {"turtle_name_prefix": "My_Turtle"}
+        ]
     )
     
     ld.add_action(turtlesim_node)

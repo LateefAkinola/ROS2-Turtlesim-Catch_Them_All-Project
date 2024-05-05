@@ -25,9 +25,9 @@ class TurtleSpawnerNode(Node):
         self.alive_turtles = []
         self.turtle_counter_ = 1
         
-        self.spawn_timer_ = self.create_timer(1.2, self.call_spawn_turtle)
+        self.spawn_timer_ = self.create_timer(1.0 / self.spawning_feq_, self.call_spawn_turtle)
         self.alive_turtle_pub_ = self.create_publisher(TurtleArray, "alive_turtles", 10)
-        self.alive_turtle_pub_timer_ = self.create_timer(1.0 / self.spawning_feq_, self.publish_alive_turtles)
+        self.alive_turtle_pub_timer_ = self.create_timer(0.5, self.publish_alive_turtles)
         self.catch_turtle_service = self.create_service(CatchTurtle, "catch_turtle", self.callback_catch_turtle)
         
         self.get_logger().info("Turtle Spawner has been started")
