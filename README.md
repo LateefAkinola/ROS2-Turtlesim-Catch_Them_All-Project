@@ -1,4 +1,4 @@
-# ROS2-Turtlesim-Catch_Them_All ()-Simulation
+# ROS2-Turtlesim-Catch_Them_All-Simulation
 
 ![Img: Turtlesim CTA](https://github.com/LateefAkinola/ROS2-Turtlesim-Catch_Them_All-Project/assets/105966848/2e9768d5-569b-489e-84d3-d3ed4aa8f32a)
 
