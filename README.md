@@ -10,10 +10,10 @@ In this project, a simulation of the popular ROS2 Turtlesim executable was devel
 - [x] The `tutle_spawner`: A custom node to spawn turtles on the window, and to manage which turtle is still “alive” (on the screen).
 
 ### The custom interfaces:
-- [x] `Messages`:
-  - `Turtle.msg` and `TurtleArray.msg` to send the list of turtles (name + coordinates) on the `/alive_turtles` topic
-- [x] `Service`:
-  - `CatchTurtle.srv` to send the name of the turtle which was caught. The client is the turtle_controller node and the server is the turtle_spawner node
+- `Messages`:
+- [x] `Turtle.msg` and `TurtleArray.msg` to send the list of turtles (name + coordinates) on the `/alive_turtles` topic
+- `Service`:
+- [x] `CatchTurtle.srv` to send the name of the turtle which was caught. The client is the turtle_controller node and the server is the turtle_spawner node
 
 ## Installation
 ```bash
