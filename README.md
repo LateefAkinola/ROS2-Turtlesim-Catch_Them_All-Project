@@ -1,6 +1,6 @@
 # ROS2 Turtlesim-Catch_Them_All Simulation
 ## Description
-In this project, a simulation of the popular ROS2 turtlesim executable was developed. A master turtle was programmed to use a P controller to catch all other turtles that appear on the screen. The implementation involved utilizing three nodes and creating three custom interfaces, consisting of two messages and one service.
+In this project, a simulation of the popular ROS2 Turtlesim executable was developed. A master turtle was programmed to use a P controller to catch all other turtles that appear on the screen. The implementation involved utilizing three nodes and creating three custom interfaces, consisting of two messages and one service.
 
 ![Img: Turtlesim CTA](https://github.com/LateefAkinola/ROS2-Turtlesim-Catch_Them_All-Project/assets/105966848/2e9768d5-569b-489e-84d3-d3ed4aa8f32a)
 
@@ -27,7 +27,7 @@ cd src/
 ```
 ```bash
 # Clone the repo
-git clone https://github.com/LateefAkinola/Mini-MobileArmBot_with_ROS2.git
+git clone https://github.com/LateefAkinola/ROS2-Turtlesim-Catch_Them_All-Project.git
 ```
 ```bash
 # Navigate back to the turtlesimcta_ws/ directory
