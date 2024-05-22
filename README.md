@@ -12,7 +12,7 @@ In this project, a simulation of the popular ROS2 turtlesim executable was devel
 ### The custom interfaces:
 - [x] `Messages`:
   - `Turtle.msg` and `TurtleArray.msg` to send the list of turtles (name + coordinates) on the `/alive_turtles` topic
-- [x] `Messages`:
+- [x] `Service`:
   - `CatchTurtle.srv` to send the name of the turtle which was caught. The client is the turtle_controller node and the server is the turtle_spawner node
 
 ## Installation
