@@ -1,19 +1,19 @@
 # ROS2 Turtlesim-Catch_Them_All Simulation
 ## Description
-In this project, A simulation of the popular ROS2 turtlesim executable was created. A master turtle was made to leverage the P controller to catch all other turtles spawned on the screen. To achieve this, 3 nodes were utilized and 3 custom interfaces were written (2 msgs + 1 srv).
+In this project, a simulation of the popular ROS2 turtlesim executable was developed. A master turtle was programmed to use a P controller to catch all other turtles that appear on the screen. The implementation involved utilizing three nodes and creating three custom interfaces, consisting of two messages and one service.
 
 ![Img: Turtlesim CTA](https://github.com/LateefAkinola/ROS2-Turtlesim-Catch_Them_All-Project/assets/105966848/2e9768d5-569b-489e-84d3-d3ed4aa8f32a)
 
-![Catch Them All Demo](https://github.com/LateefAkinola/ROS2-Turtlesim-Catch_Them_All-Project/assets/105966848/eb6e6cb0-801a-4af1-866f-2b7acbf743b7)
-
 ### The nodes:
-- [x] The **turtlesim_node** from the turtlesim package
-- [x] The **tutle_controller**: A custom node to control the turtle (named “turtle1”) which is already existing in the turtlesim_node.
-- [x] The **tutle_spawner**: A custom node to spawn turtles on the window, and to manage which turtle is still “alive” (on the screen).
+- [x] The `turtlesim_node` from the turtlesim package
+- [x] The `tutle_controller`: A custom node to control the turtle (named “turtle1”) which is already existing in the turtlesim_node.
+- [x] The `tutle_spawner`: A custom node to spawn turtles on the window, and to manage which turtle is still “alive” (on the screen).
 
 ### The custom interfaces:
-- [x] **Turtle.msg** and **TurtleArray.msg** to send the list of turtles (name + coordinates) on the **/alive_turtles** topic
-- [x] **CatchTurtle.srv** to send the name of the turtle which was caught. The client is the turtle_controller node and the server is the turtle_spawner node
+- [x] `Messages`:
+  - `Turtle.msg` and `TurtleArray.msg` to send the list of turtles (name + coordinates) on the `/alive_turtles` topic
+- [x] `Messages`:
+  - `CatchTurtle.srv` to send the name of the turtle which was caught. The client is the turtle_controller node and the server is the turtle_spawner node
 
 ## Installation
 ```bash
